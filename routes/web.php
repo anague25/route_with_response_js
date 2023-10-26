@@ -30,6 +30,18 @@ $posts = [
     
     ];
 
+    $posts2 = [
+    1 => [
+        "title" => "je suis tres beau",
+        "content" => "toute les filles me cours apres"   
+        ],
+    2 => [
+        "title" => "la programationn",
+        "content" => "c'est le meilleur metier"
+        ]
+    
+    ];
+
 Route::get('fun/responses',function() use ($posts){
     return response($posts,201)
     ->header('Content-Type','application/json')

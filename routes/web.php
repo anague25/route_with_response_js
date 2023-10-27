@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,32 +19,24 @@ Route::get('/', function () {
 });
 
 
-$posts = [
-    1 => [
-        "title" => "je suis tres beau",
-        "content" => "toute les filles me cours apres"   
-        ],
-    2 => [
-        "title" => "la programationn",
-        "content" => "c'est le meilleur metier"
-        ]
-    
-    ];
 
-    $posts2 = [
-    1 => [
-        "title" => "je suis tres beau",
-        "content" => "toute les filles me cours apres"   
-        ],
-    2 => [
-        "title" => "la programationn",
-        "content" => "c'est le meilleur metier"
-        ]
-    
-    ];
 
-Route::get('fun/responses',function() use ($posts){
-    return response($posts,201)
-    ->header('Content-Type','application/json')
-    ->cookie('MY_COOKIE','SONNA ROOSVELT',3600);
+
+Route::get('/contact',function(){
+    return view('contact');
 });
+
+// Route::get('fun/responses',function() use ($posts){
+//     return response($posts,201)
+//     ->header('Content-Type','application/json')
+//     ->cookie('MY_COOKIE','SONNA ROOSVELT',3600);
+// });
+
+
+Route::get('/redirect',function(){
+    return redirect('/contact');
+});
+
+
+Route::resource('postss',PostController::class)->only(['index','show']);
+

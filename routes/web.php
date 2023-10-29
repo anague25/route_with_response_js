@@ -40,3 +40,7 @@ Route::get('/redirect',function(){
 
 Route::resource('postss',PostController::class)->only(['index','show']);
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
